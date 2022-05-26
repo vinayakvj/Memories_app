@@ -22,7 +22,7 @@ const bgModel = mongoose.model("bgModel", schema);
 /* app.use("/posts", router); */
 app.use(cors());
 
-const dbURL = "mongodb://localhost:27017/Test";
+const dbURL = "mongodb://localhost:27017/";
 
 const data = [
   { name: "Vinayak", age: "21" },
@@ -39,8 +39,8 @@ mongoose
     console.log("err.");
   });
 
-app.get("/", (req, res) => {
-  const dbb = new modelSchema({ name: "Vinny", age: "21" });
+app.get("/insert", (req, res) => {
+  const dbb = new modelSchema({ name: "Vikwjdhwdhnny", age: "21" });
 
   dbb
     .save()
@@ -52,4 +52,15 @@ app.get("/", (req, res) => {
       console.log(err);
     });
   res.send("hiiii");
+});
+
+app.get("/ret", (req, res) => {
+  modelSchema
+    .findById("628fb8feb5762d88b5536792")
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log("data not retrieved.");
+    });
 });
